@@ -63,8 +63,8 @@ En escencia, un marco de trabajo **provee procesos repetibles y mejora la eficie
 
 > **CONCEPTO** 
 > [Threat Informed Defense](https://medium.com/mitre-engenuity/accelerating-threat-informed-defense-a-collaborative-approach-3a3104f5fe5c): *"The systematic application of a Deep understanding of adversary tradecraft and technology to prevent, detect and/or repond to cyber attacks"*
-
-![Threat Informed Defense](./assets/Picture4.png| width=30){: width="30%"}
+> 
+<img src="./assets/Picture4.png" width="30%">
 
 ### Puntos clave
 - Threat Hunting no es investigación de alertas, sino un enfoque proactivo de investigación aplicable a las fases "post-mortem" de un kill chain. 
