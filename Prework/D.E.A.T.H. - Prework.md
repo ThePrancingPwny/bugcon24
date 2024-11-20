@@ -419,6 +419,25 @@ Posteriormente se define la consulta en lenguaje natural, esto permite tener una
 
 Finalmente, como se muestra en el ejemplo, se define la consulta de cada uno de los componentes de datos para cubrir todas las oportunidades de detección identificadas. En este momento también es posible identificar las suposiciones y puntos ciegos bajo los cuales estas consultas operarán.
 
+## Alert and Detection Strategy
+
+Algunos problemas potenciales experimentados por el desarrollo de alertas incluyen:
+
+- La alerta no tiene suficiente documentación
+- La alerta no está validada para la durabilidad
+- La alerta no se revisa antes de su puesta en producción.
+
+La metodología de ingeniería de detección permite crear detecciones utilizando un proceso robusto y repetible. Estos pasos metódicos permiten obtener información que puede ser usada no solo en el desarrollo de detecciones sino también para documentar su alertamiento y respuesta. Tomando toda esta información generada en el desarrollo de una detección es posible trasladarla a nuestro ADS.
+
+<img src="./assets/Picture39.png" width="70%">
+
+La metodologia de inegniera de detección y el proyecto ADS guardan una relación entre los pasos y secciones que conforman a ambos, por lo que es posible realizar un mapeo y ver visualmente como interactuan.
+
+<img src="./assets/Picture40.png" width="70%">
+
+> **LECTURA ADICIONAL:**
+> [Alerting and Detection Strategy](https://blog.palantir.com/alerting-and-detection-strategy-framework-52dc33722df2)
+
 ## Conclusiones
 
 Dentro de la metodología de Threat Hunting e Ingeniería de Detección; es importante:
