@@ -68,7 +68,7 @@ En escencia, un marco de trabajo **provee procesos repetibles y mejora la eficie
 
 ### Puntos clave
 - Threat Hunting no es investigación de alertas, sino un enfoque proactivo de investigación aplicable a las fases "post-mortem" de un kill chain. 
-- Sus distintas fases permiten el análisis metodológico de datos con elf in de identificar actividad maliciosa antes de que la amenaza logre los objetivos en el ambiente tecnológico.
+- Sus distintas fases permiten el análisis metodológico de datos con el fin de identificar actividad maliciosa antes de que la amenaza logre los objetivos en el ambiente tecnológico.
 - El uso de marcos de trabajo permite establecer procesos estructurados, medibles, y escalables para la implementación y gestión de procesos de Threat Hunting (así como su interacción con otras disciplicas defensivas y ofensivas).
 
 ## Ingeniería de detección
@@ -167,6 +167,9 @@ Detectar actividad maliciosa correlacionada con la técnica ATT&CK, así como co
 - Esta metodología debe ser probada, mejorable y repetible.
 
 ## Metodología de Ingeniería de Detección - Walkthrough
+A continuación, analizaremos cada una de las etapas en la metodología de ingeniería de detección. Tomaremos una ténica de ejemplo y avanzaremos a lo largo de cada etapa construyendo nuestra detección. Puedes seguir este ejercicio a la par e ir agregando tus propios resultados para nutrir la investigación.
+
+Los pasos en la metodología de ingeniería de detección son:
 
 1. Seleccionar una técnica objetivo.
 2. Investigar la tecnología asociada.
@@ -235,8 +238,8 @@ Todos estos servicios y otros serán creados como “procesos hijo” de `servic
 - Multiples instancias de `svchost.exe`
 - Procesos que contienen sus propios servicios
 
-<img src="./assets/Picture13.png" width="20%">
-<img src="./assets/Picture14.jpg" width="40%">
+<img src="./assets/Picture13.png" width="40%">
+<img src="./assets/Picture14.jpg" width="60%">
 
 > **Respuesta:**
 > **¿Qué hay acerca de Service Control Manager que Windows Services necesita para funcionar?**
@@ -252,6 +255,7 @@ La creación y/o modificación de servicios puede lograrse de distintas maneras 
 - Win32 API
 
 **`sc.exe`** crea una subllave y entradas para un servicio en el registro de Windows y en la base de datos de Service Control Manager
+
 Ejemplos:
 ```powershell
 sc.exe \\myserver create NewService binpath= c:\windows\system32\NewServ.exe
@@ -267,6 +271,7 @@ New-Service -Name "TestService" -BinaryPathName '"C:\WINDOWS\System32\svchost.ex
 ```
 
 En el caso de **WMI**, el método `Create` crea un nuevo servicio en el sistema.
+
 Ejemplos:
 ```powershell
 uint32 Create(
@@ -293,22 +298,22 @@ Otras funciones disponibles incluyen `CreateProcessWithTokenW` y `CreateProcessW
 
 - Las funciones de creación de procesos contenidas en `Advapi32.dll` llaman al servicio secundario de inicio de session (`seclogon.dll`, incluido en un `SvcHost.exe`) al hacer un Remote Procedure Call (RPC) para realizar la creación del proceso.
 
-- SecLogon ejecuta la llamada en su función interna `SlrCreateProcessWithLogon`, si no hay errores, posteriormente ejecuta la función `CreateProcessAsUser`.
+- SecLogon ejecuta la llamada en su función interna `SlrCreateProcessWithLogon`. Si no hay errores, posteriormente ejecuta la función `CreateProcessAsUser`.
 
 - El servicio SecLogon está configurado por defecto para iniciar de manera manual, por lo tanto, la primera vez que las funciones `CreateProcessWithTokenW` o `CreateProcessWithLogonW` son llamadas, el servicio es iniciado. Si el servicio falla al iniciar (un administrador puede configurar el servicio como deshabilitado), estas llamadas a función fallaran.
 
-<img src="./assets/Picture15.png" width="50%">
+<img src="./assets/Picture15.png" width="60%">
 
 ¿Ya es todo? ¿Qué sigue? ¿Análisis estático? ¿Dinámico?
 
 <img src="./assets/Picture16.jpg" width="30%">
 
 El análisis no termina aquí. Podemos hacer uso de [Sysinternals](https://learn.microsoft.com/en-us/sysinternals/) para continuar nuestro entendimiento:
-<img src="./assets/Picture17.png" width="70%">
-<img src="./assets/Picture18.png" width="70%">
+<img src="./assets/Picture17.png" width="90%">
+<img src="./assets/Picture18.png" width="90%">
 
 ¿Qué pasa en el registro de Windows?
-<img src="./assets/Picture19.png" width="70%">
+<img src="./assets/Picture19.png" width="90%">
 
 - Cuando un programa de control de servicio (SCP), registra un servicio al llamar a la función Create Service, una llamada a la instancia SCM (Service Control Manager) ejecutándose en el sistema es realizada. 
 
@@ -325,15 +330,15 @@ Con base en nuestra investigación de creación de servicios, ahora nos surge un
 
 - ¿Qué biblioteca provee la función `CreateService` la cual es necesaria para crear un servicio?
 
-<img src="./assets/Picture20.png" width="50%">
-<img src="./assets/Picture21.png" width="50%">
-<img src="./assets/Picture22.png" width="50%">
+<img src="./assets/Picture20.png" width="70%">
+<img src="./assets/Picture21.png" width="70%">
+<img src="./assets/Picture22.png" width="70%">
 
 > **Respuesta:**
 > **¿Qué biblioteca provee la función `CreateService` la cual es necesaria para crear un servicio?**
 > - `sechost.dll`
 
-Con base en esta investigación podemos también responder la última pregunta que nos planteamos al inicio. Como podemos ver, a partir de la selección de una técnica podemos abstraer sus distintos componentes y generar una serie de preguntas iniciales que guían nuestra investigación. De la misma, nuevas preguntas pueden surgir que van enriqueciendo aún más la investigación y por tanto, el entendimiento de la técnica.
+Con base en esta investigación podemos también responder la última pregunta que nos planteamos al inicio. Como podemos ver, a partir de la selección de una técnica podemos abstraer sus distintos componentes y generar una serie de preguntas iniciales que guían nuestra investigación. De la misma investigación, nuevas preguntas pueden surgir que van enriqueciendo aún más la investigación y por tanto, el entendimiento de la técnica.
 
 ### Crear una prueba de concepto. 
 Busca o crea una prueba de concepto que permita evaluar las fuentes de datos y validar sus detecciones.
@@ -352,7 +357,7 @@ sc.exe \\myserver create NewService binpath= c:\windows\system32\NewServ.exe
 psexec.exe -accepteula -d -s \\<INTERNAL_IP> rundll32.exe C:\windows\192145.dll,StartW
 ```
 
-<img src="./assets/Picture23.png" width="70%">
+<img src="./assets/Picture23.png" width="90%">
 
 ### Identificar las fuentes de datos.
 - Evaluar qué fuentes de datos son necesarias para permitir la detección de la técnica.
@@ -375,19 +380,19 @@ El proyecto de Mitre ATT&CK ha trabajado por años para poder brindar una estruc
 > [Mitre ATT&CK Data Sources](https://github.com/mitre-attack/attack-datasources?tab=readme-ov-file)
 
 
-Podemos hacer uso de [Mitre data sources](https://github.com/mitre-attack/attack-datasources) para llevar a cabo el modelado de datos; similar a:
+Podemos hacer uso de [Mitre data sources](https://github.com/mitre-attack/attack-datasources) para llevar a cabo el modelado de datos; por ejemplo para nuestro caso:
 
-<img src="./assets/Picture24.png" width="70%">
-<img src="./assets/Picture25.png" width="70%">
-<img src="./assets/Picture26.png" width="40%">
-<img src="./assets/Picture27.png" width="70%">
-<img src="./assets/Picture28.png" width="70%">
-<img src="./assets/Picture29.png" width="70%">
-<img src="./assets/Picture30.png" width="70%">
-<img src="./assets/Picture31.png" width="70%">
-<img src="./assets/Picture32.png" width="70%">
-<img src="./assets/Picture33.png" width="70%">
-<img src="./assets/Picture34.png" width="70%">
+<img src="./assets/Picture24.png" width="90%">
+<img src="./assets/Picture25.png" width="90%">
+<img src="./assets/Picture26.png" width="60%">
+<img src="./assets/Picture27.png" width="90%">
+<img src="./assets/Picture28.png" width="90%">
+<img src="./assets/Picture29.png" width="90%">
+<img src="./assets/Picture30.png" width="90%">
+<img src="./assets/Picture31.png" width="90%">
+<img src="./assets/Picture32.png" width="90%">
+<img src="./assets/Picture33.png" width="90%">
+<img src="./assets/Picture34.png" width="90%">
 
 ### Construir la detección.
 
@@ -402,24 +407,29 @@ Podemos hacer uso de [Mitre data sources](https://github.com/mitre-attack/attack
 Una vez con el modelo de datos identificado, es momento de aplicarlo a una consulta, este modelo de datos incluye todas las oportunidades de detección de acuerdo a la investigación realizada sobre la técnica. 
 
 
-<img src="./assets/Picture35.png" width="70%">
+<img src="./assets/Picture35.png" width="90%">
 
 Como ejemplo se tomará el componente de _Command Execution_ perteneciente a la fuente de datos _Command_, combinando la investigación de la técnica y el modelado de datos es posible identificar los atributos que son estaticos y que permitiran reducir resultados no relevantes    
 
-<img src="./assets/Picture36.png" width="70%">
+<img src="./assets/Picture36.png" width="90%">
 
 Posteriormente se define la consulta en lenguaje natural, esto permite tener una consulta no asociada a un lenguaje orientado a una tecnologia, sino agnostica, lista para ser traducida a pseudocodigo (Mitre CAR u OSSEM)  
 #### Construyendo detecciones
-<img src="./assets/Picture37.png" width="70%">
+<img src="./assets/Picture37.png" width="90%">
 
 Finalmente, como se muestra en el ejemplo, se define la consulta de cada uno de los componentes de datos para cubrir todas las oportunidades de detección identificadas. En este momento también es posible identificar las suposiciones y puntos ciegos bajo los cuales estas consultas operarán.
 
 ## Conclusiones
 
-- Conocer la importancia de contar con un entendimiento profundo del tradecraft empleado por los atacantes para detectar el uso de TTPs dentro del ambiente tecnológico que estemos defendiendo.
+Dentro de la metodología de Threat Hunting e Ingeniería de Detección; es importante:
 
-- Lograr familiaridad con conceptos clave para operacionalizar inteligencia provista por el Mitre ATT&CK, esto permite lograr un mayor entendimiento de como puede ser usada para madurar nuestras capacidades y estrategias de detección y respuesta. 
+- Conocer la importancia de contar con un entendimiento profundo del tradecraft empleado por los atacantes para detectar el uso de TTPs dentro del ambiente tecnológico que estemos defendiendo.
+- Lograr familiaridad con conceptos clave para operacionalizar inteligencia provista por el Mitre ATT&CK. Esto permite lograr un mayor entendimiento de como puede ser usada para madurar nuestras capacidades y estrategias de detección y respuesta. 
 
 - Ingenieria de Detección y Threat Hunting son dos disciplinas intimamente relacionadas, conocer como influyen entre si nos ayuda a ser más efectivos en nuestros esfuerzos de identificación proactiva de amenazas. Threat Hunting e Ingenieria de Detección no se limitan al uso de herramientas, sino que emplean procesos iterativos, metódicos y analíticos.
-
 - Mejorar el tradecraft del Blue Team permite cubrir esos “blind spots” que las amenazas buscan en las herramientas de detección.
+
+## Extra mile
+1. Replica el walkthrough y piensa ¿qué preguntas iniciales agregarías?, ¿qué otros caminos surgen durante tu propia investigación?, ¿cómo queda tu detección final?.
+
+2. Realiza una detección para alguna otra técnica del Mitre, por ejemplo Kerberoasting.
