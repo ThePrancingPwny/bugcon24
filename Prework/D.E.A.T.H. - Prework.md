@@ -5,17 +5,17 @@ Threat hunting se refiere a cualquier método manual o semiautomático que permi
 
 El objetivo principal del Threat hunting es reducir el tiempo de detección y respuesta al identificar compromisos antes de que una  amenaza sea capaz de completar sus objetivos.
 
-![Threat Hunting](./assets/Picture1.jpg)
+<img src="./assets/Picture1.jpg">
 
 ### Defensa Continua
 
-Threat Hunting requiere un cambio de pensamiento en donde no solo basta con prevenir que un compromiso ocurra y responder a él, sino que es necesario detectarlo activamente. Se busca pasar de un enfoque meramente preventivo localizado en las fases de descubrimiento, trega, y explotación a las fases "post-mortem".
+Threat Hunting requiere un cambio de pensamiento en donde no solo basta con prevenir que un compromiso ocurra y responder a él, sino que es necesario detectarlo activamente. Se busca pasar de un enfoque meramente preventivo localizado en las fases de descubrimiento, entrega, y explotación a las fases "post-mortem".
 
-![Threat Hunting - Enfoque](./assets/Picture2.png){: width="50%"}
+<img src="./assets/Picture2.png" width="50%">
 
 ¿Dónde se ubica Threat Hunting en el marco de defensa continua?
 
-![Threat Hunting - Defensa continua](./assets/Picture3.png){: width="50%"}
+<img src="./assets/Picture3.png" width="50%">
 
 #### Detección
 - Esta fase se basa en el análisis de datos centralizados para hacer detecciones a nivel organización.
@@ -64,7 +64,7 @@ En escencia, un marco de trabajo **provee procesos repetibles y mejora la eficie
 > **CONCEPTO** 
 > [Threat Informed Defense](https://medium.com/mitre-engenuity/accelerating-threat-informed-defense-a-collaborative-approach-3a3104f5fe5c): *"The systematic application of a Deep understanding of adversary tradecraft and technology to prevent, detect and/or repond to cyber attacks"*
 
-![Threat Informed Defense](./assets/Picture4.png){: width="30%"}
+<img src="./assets/Picture4.png" width="30%">
 
 ### Puntos clave
 - Threat Hunting no es investigación de alertas, sino un enfoque proactivo de investigación aplicable a las fases "post-mortem" de un kill chain. 
@@ -86,7 +86,7 @@ A menudo, el blue team construye detecciones basadas en indicadores frágiles:
 
 Desafortunadamente, este enfoque es fácilmente evadido por los atacantes, ya que estos indicadores pueden cambiar tan fácil como el cambio de un byte.
 
-![La pirámide del dolor de David Bianco](./assets/Picture5.png){: width="50%"}
+<img src="./assets/Picture5.png" width="50%">
 
 [La pirámide del dolor de David Bianco](https://www.attackiq.com/glossary/pyramid-of-pain/) es una representación de indicadores de compromiso (IOC) ordenados por su importancia para un adversario. Bloquear estos IOCs puede ser doloroso en mayor o menor medida para el adversario con base en la dificultad que estos representan.
 
@@ -95,7 +95,7 @@ El equipo encargado de la detección debe cambiar su enfoque si quiere combatir 
 Para ello, un proceso repetible puede ayudar al equipo de Threat Hunting a crear detecciones más robustas.
 
 ### Clasificación de Detecciones 
-![Clasificación de detecciones - Mitre ATT&CK](./assets/Picture6.png){: width="50%"}
+<img src="./assets/Picture6.png" width="50%">
 
 #### Alertables
 - Detección de comportamiento que no es malicioso, pero sí inusual y hasta sospechoso.
@@ -136,7 +136,7 @@ Los proveedores pueden participar en la evaluación enviando sus soluciones a MI
 - Las categorías se calibran en todos los proveedores para garantizar la coherencia.
 - El análisis humano está sujeto a discreción y sesgos, pero se realizan esfuerzos para protegerse contra estos sesgos.
 
-![Detecciones Mitre ATT&CK EDR Evaluations](./assets/Picture7.png){: width="70%"}
+<img src="./assets/Picture7.png" width="70%">
 
 **N/A (no aplicable)**
 El proveedor no tiene visibilidad del sistema, por ejemplo, no hay ningún agente implementado en la máquina.
@@ -159,7 +159,7 @@ Detectar actividad maliciosa correlacionada con la técnica ATT&CK, así como co
 > **;TLDR**
 > *Si las soluciones de los proveedores detectan una técnica de ataque significa que tienen la cobertura más completa para investigar el ataque.*
 
-![SentinelOne](./assets/Picture8.png){: width="70%"}
+<img src="./assets/Picture8.png" width="70%">
 
 ### Puntos clave
 - La detección de una técnica está en función de la calidad de los datos y el analítico que los analiza. 
@@ -193,7 +193,7 @@ Se pueden adoptar más de un criterio para seleccionar las técnicas:
 
 Para nuestro ejemplo práctico deleccionaremos [T1569.002 - System Services: Service Execution](https://attack.mitre.org/techniques/T1569/002/)
 
-![Selección de técnica](./assets/Picture9.png){: width="70%"}
+<img src="./assets/Picture9.png" width="70%">
 
 ### Investigar la tecnología asociada.
 - Investigar la tecnología asociada con esa técnica ayuda a comprender los casos de uso, fuentes de datos relacionadas y oportunidades de detección.
@@ -206,16 +206,16 @@ Para nuestro ejemplo práctico deleccionaremos [T1569.002 - System Services: Se
 | | ¿Qué alternativas a este ataque tienen los atacantes? |
 | | Lista potencial de fuentes de datos. |
 
-![Investigación de técnica](./assets/Picture10.png){: width="70%"}
+<img src="./assets/Picture10.png" width="70%">
 
 #### Siguiendo al conejo blanco - Preguntas iniciales y abtracción
 Haciendo uso de [Capability Abstraction](https://posts.specterops.io/capability-abstraction-fbeaeeb26384) podemos tener un entendimiento cada vez más profundo de nuestro objeto de estudio, por ejemplo, SpecterOps usa el ejemplo de [Kerberoasting](https://attack.mitre.org/techniques/T1558/003/):
 
-![Investigación de técnica](./assets/Picture12.png){: width="70%"}
+<img src="./assets/Picture12.png" width="70%">
 
 Regresando a nuestro ejemplo práctico, podemos plantearnos una serie de preguntas iniciales que nos ayuden a entender "how deep the rabbit hole goes"
 
-![Investigación de técnica](./assets/Picture11.jpg){: width="30%"}
+<img src="./assets/Picture11.jpg" width="30%">
 
 - ¿Qué hay acerca de Service Control Manager que Windows Services necesita para funcionar?
 - ¿Qué utilidades del sistema están disponibles para manipular servicios?
@@ -235,8 +235,8 @@ Todos estos servicios y otros serán creados como “procesos hijo” de `servic
 - Multiples instancias de `svchost.exe`
 - Procesos que contienen sus propios servicios
 
-![Investigación de técnica](./assets/Picture13.png){: width="20%"}
-![Investigación de técnica](./assets/Picture14.jpg){: width="40%"}
+<img src="./assets/Picture13.png" width="20%">
+<img src="./assets/Picture14.jpg" width="40%">
 
 > **Respuesta:**
 > **¿Qué hay acerca de Service Control Manager que Windows Services necesita para funcionar?**
@@ -297,18 +297,18 @@ Otras funciones disponibles incluyen `CreateProcessWithTokenW` y `CreateProcessW
 
 - El servicio SecLogon está configurado por defecto para iniciar de manera manual, por lo tanto, la primera vez que las funciones `CreateProcessWithTokenW` o `CreateProcessWithLogonW` son llamadas, el servicio es iniciado. Si el servicio falla al iniciar (un administrador puede configurar el servicio como deshabilitado), estas llamadas a función fallaran.
 
-![Investigación de técnica](./assets/Picture15.png){: width="50%"}
+<img src="./assets/Picture15.png" width="50%">
 
 ¿Ya es todo? ¿Qué sigue? ¿Análisis estático? ¿Dinámico?
 
-![Investigación de técnica](./assets/Picture16.jpg){: width="30%"}
+<img src="./assets/Picture16.jpg" width="30%">
 
 El análisis no termina aquí. Podemos hacer uso de [Sysinternals](https://learn.microsoft.com/en-us/sysinternals/) para continuar nuestro entendimiento:
-![Investigación de técnica](./assets/Picture17.png){: width="70%"}
-![Investigación de técnica](./assets/Picture18.png){: width="70%"}
+<img src="./assets/Picture17.png" width="70%">
+<img src="./assets/Picture18.png" width="70%">
 
 ¿Qué pasa en el registro de Windows?
-![Investigación de técnica](./assets/Picture19.png){: width="70%"}
+<img src="./assets/Picture19.png" width="70%">
 
 - Cuando un programa de control de servicio (SCP), registra un servicio al llamar a la función Create Service, una llamada a la instancia SCM (Service Control Manager) ejecutándose en el sistema es realizada. 
 
@@ -325,9 +325,9 @@ Con base en nuestra investigación de creación de servicios, ahora nos surge un
 
 - ¿Qué biblioteca provee la función `CreateService` la cual es necesaria para crear un servicio?
 
-![Investigación de técnica](./assets/Picture20.png){: width="50%"}
-![Investigación de técnica](./assets/Picture21.png){: width="50%"}
-![Investigación de técnica](./assets/Picture22.png){: width="50%"}
+<img src="./assets/Picture20.png" width="50%">
+<img src="./assets/Picture21.png" width="50%">
+<img src="./assets/Picture22.png" width="50%">
 
 > **Respuesta:**
 > **¿Qué biblioteca provee la función `CreateService` la cual es necesaria para crear un servicio?**
@@ -352,7 +352,7 @@ sc.exe \\myserver create NewService binpath= c:\windows\system32\NewServ.exe
 psexec.exe -accepteula -d -s \\<INTERNAL_IP> rundll32.exe C:\windows\192145.dll,StartW
 ```
 
-![Prueba de concepto - ATT&CK](./assets/Picture23.png){: width="70%"}
+<img src="./assets/Picture23.png" width="70%">
 
 ### Identificar las fuentes de datos.
 - Evaluar qué fuentes de datos son necesarias para permitir la detección de la técnica.
@@ -369,7 +369,7 @@ Las fuentes de datos proveen una manera de crear relaciones entre las actividade
 
 El proyecto de Mitre ATT&CK ha trabajado por años para poder brindar una estructura y metodologia para describir fuentes de datos que permitan una mejor comprensión y accionabilidad de las mismas, este avance ha sido reflejado desde la versión 9.0 (2021)
 
-![Fueentes de datos - Metodologia](./assets/Picture38.jpg){: width="70%"}
+<img src="./assets/Picture38.jpg" width="70%">
 
 > **LECTURA ADICIONAL:**
 > [Mitre ATT&CK Data Sources](https://github.com/mitre-attack/attack-datasources?tab=readme-ov-file)
@@ -377,17 +377,17 @@ El proyecto de Mitre ATT&CK ha trabajado por años para poder brindar una estruc
 
 Podemos hacer uso de [Mitre data sources](https://github.com/mitre-attack/attack-datasources) para llevar a cabo el modelado de datos; similar a:
 
-![Fueentes de datos - Modelado](./assets/Picture24.png){: width="70%"}
-![Fueentes de datos - Modelado](./assets/Picture25.png){: width="70%"}
-![Fueentes de datos - Modelado](./assets/Picture26.png){: width="40%"}
-![Fueentes de datos - Modelado](./assets/Picture27.png){: width="70%"}
-![Fueentes de datos - Modelado](./assets/Picture28.png){: width="70%"}
-![Fueentes de datos - Modelado](./assets/Picture29.png){: width="70%"}
-![Fueentes de datos - Modelado](./assets/Picture30.png){: width="70%"}
-![Fueentes de datos - Modelado](./assets/Picture31.png){: width="70%"}
-![Fueentes de datos - Modelado](./assets/Picture32.png){: width="70%"}
-![Fueentes de datos - Modelado](./assets/Picture33.png){: width="70%"}
-![Fueentes de datos - Modelado](./assets/Picture34.png){: width="70%"}
+<img src="./assets/Picture24.png" width="70%">
+<img src="./assets/Picture25.png" width="70%">
+<img src="./assets/Picture26.png" width="40%">
+<img src="./assets/Picture27.png" width="70%">
+<img src="./assets/Picture28.png" width="70%">
+<img src="./assets/Picture29.png" width="70%">
+<img src="./assets/Picture30.png" width="70%">
+<img src="./assets/Picture31.png" width="70%">
+<img src="./assets/Picture32.png" width="70%">
+<img src="./assets/Picture33.png" width="70%">
+<img src="./assets/Picture34.png" width="70%">
 
 ### Construir la detección.
 
@@ -402,15 +402,15 @@ Podemos hacer uso de [Mitre data sources](https://github.com/mitre-attack/attack
 Una vez con el modelo de datos identificado, es momento de aplicarlo a una consulta, este modelo de datos incluye todas las oportunidades de detección de acuerdo a la investigación realizada sobre la técnica. 
 
 
-![Creación de la detección](./assets/Picture35.png){: width="70%"}
+<img src="./assets/Picture35.png" width="70%">
 
 Como ejemplo se tomará el componente de _Command Execution_ perteneciente a la fuente de datos _Command_, combinando la investigación de la técnica y el modelado de datos es posible identificar los atributos que son estaticos y que permitiran reducir resultados no relevantes    
 
-![Creación de la detección](./assets/Picture36.png){: width="70%"}
+<img src="./assets/Picture36.png" width="70%">
 
 Posteriormente se define la consulta en lenguaje natural, esto permite tener una consulta no asociada a un lenguaje orientado a una tecnologia, sino agnostica, lista para ser traducida a pseudocodigo (Mitre CAR u OSSEM)  
 #### Construyendo detecciones
-![Creación de la detección](./assets/Picture37.png){: width="70%"}
+<img src="./assets/Picture37.png" width="70%">
 
 Finalmente, como se muestra en el ejemplo, se define la consulta de cada uno de los componentes de datos para cubrir todas las oportunidades de detección identificadas. En este momento también es posible identificar las suposiciones y puntos ciegos bajo los cuales estas consultas operarán.
 
