@@ -10,7 +10,7 @@ El objetivo principal del Threat hunting es reducir el tiempo de detección y re
 
 ### Defensa Continua
 
-Threat Hunting requiere un cambio de pensamiento en donde no solo basta con prevenir que un compromiso ocurra y responder a él, sino que es necesario detectarlo activamente. Se busca pasar de un enfoque meramente preventivo localizado en las fases de descubrimiento, trega, y explotaación a las fases "post-mortem".
+Threat Hunting requiere un cambio de pensamiento en donde no solo basta con prevenir que un compromiso ocurra y responder a él, sino que es necesario detectarlo activamente. Se busca pasar de un enfoque meramente preventivo localizado en las fases de descubrimiento, trega, y explotación a las fases "post-mortem".
 
 ![Threat Hunting - Enfoque](./assets/Picture2.png){: width="50%"}
 
@@ -365,6 +365,17 @@ psexec.exe -accepteula -d -s \\<INTERNAL_IP> rundll32.exe C:\windows\192145.dll,
 | Entendimiento de la motivación del atacante. |  |
 | Prueba de concepto. |  |
 
+#### ¿Qué son? 
+Las fuentes de datos proveen una manera de crear relaciones entre las actividades de adversarios y la telemtria recolectada en un ambiente tecnologico. Esto convierte a las fuentes de datos en uno de las aspectos más vitales para desarrollar detecciones.
+
+El proyecto de Mitre ATT&CK ha trabajado por años para poder brindar una estructura y metodologia para describir fuentes de datos que permitan una mejor comprensión y accionabilidad de las mismas, este avance ha sido reflejado desde la versión 9.0 (2021)
+
+![Fueentes de datos - Metodologia](./assets/Picture38.jpg){: width="70%"}
+
+> **LECTURA ADICIONAL:**
+> [Mitre ATT&CK Data Sources](https://github.com/mitre-attack/attack-datasources?tab=readme-ov-file)
+
+
 Podemos hacer uso de [Mitre data sources](https://github.com/mitre-attack/attack-datasources) para llevar a cabo el modelado de datos; similar a:
 
 ![Fueentes de datos - Modelado](./assets/Picture24.png){: width="70%"}
@@ -389,15 +400,27 @@ Podemos hacer uso de [Mitre data sources](https://github.com/mitre-attack/attack
 | Pasos de validación. | Lista de todas las suposiciones que fueron hechas para la detección. |
 | Entendimiento de la motivación del atacante. | Lista de falsos positivos. |
 
+Una vez con el modelo de datos identificado, es momento de aplicarlo a una consulta, este modelo de datos incluye todas las oportunidades de detección de acuerdo a la investigación realizada sobre la técnica. 
+
+
 ![Creación de la detección](./assets/Picture35.png){: width="70%"}
+
+Como ejemplo se tomará el componente de _Command Execution_ perteneciente a la fuente de datos _Command_, combinando la investigación de la técnica y el modelado de datos es posible identificar los atributos que son estaticos y que permitiran reducir resultados no relevantes    
+
 ![Creación de la detección](./assets/Picture36.png){: width="70%"}
 
+Posteriormente se define la consulta en lenguaje natural, esto permite tener una consulta no asociada a un lenguaje orientado a una tecnologia, sino agnostica, lista para ser traducida a pseudocodigo (Mitre CAR u OSSEM)  
 #### Construyendo detecciones
 ![Creación de la detección](./assets/Picture37.png){: width="70%"}
 
+Finalmente, como se muestra en el ejemplo, se define la consulta de cada uno de los componentes de datos para cubrir todas las oportunidades de detección identificadas. En este momento también es posible identificar las suposiciones y puntos ciegos bajo los cuales estas consultas operarán.
+
 ## Conclusiones
 
+- Conocer la importancia de contar con un entendimiento profundo del tradecraft empleado por los atacantes para detectar el uso de TTPs dentro del ambiente tecnológico que estemos defendiendo.
 
+- Lograr familiaridad con conceptos clave para operacionalizar inteligencia provista por el Mitre ATT&CK, esto permite lograr un mayor entendimiento de como puede ser usada para madurar nuestras capacidades y estrategias de detección y respuesta. 
 
+- Ingenieria de Detección y Threat Hunting son dos disciplinas intimamente relacionadas, conocer como influyen entre si nos ayuda a ser más efectivos en nuestros esfuerzos de identificación proactiva de amenazas. Threat Hunting e Ingenieria de Detección no se limitan al uso de herramientas, sino que emplean procesos iterativos, metódicos y analíticos.
 
-
+- Mejorar el tradecraft del Blue Team permite cubrir esos “blind spots” que las amenazas buscan en las herramientas de detección.
