@@ -1,5 +1,4 @@
 # D.E.A.T.H. Prework
----
 
 ## Threat Hunting
 Threat hunting se refiere a cualquier método manual o semiautomático que permite identificar de forma proactiva la presencia de agentes amenaza en un ambiente tecnológico, asumiendo que estos han evadido los controles de detección existentes.
