@@ -11,11 +11,11 @@ El objetivo principal del Threat hunting es reducir el tiempo de detección y re
 
 Threat Hunting requiere un cambio de pensamiento en donde no solo basta con prevenir que un compromiso ocurra y responder a él, sino que es necesario detectarlo activamente. Se busca pasar de un enfoque meramente preventivo localizado en las fases de descubrimiento, entrega, y explotación a las fases "post-mortem".
 
-<img src="./assets/Picture2.png" width="50%">
+<img src="./assets/Picture2.png" width="70%">
 
 ¿Dónde se ubica Threat Hunting en el marco de defensa continua?
 
-<img src="./assets/Picture3.png" width="50%">
+<img src="./assets/Picture3.png" width="70%">
 
 #### Detección
 - Esta fase se basa en el análisis de datos centralizados para hacer detecciones a nivel organización.
@@ -63,11 +63,7 @@ En escencia, un marco de trabajo **provee procesos repetibles y mejora la eficie
 
 > **CONCEPTO** 
 > [Threat Informed Defense](https://medium.com/mitre-engenuity/accelerating-threat-informed-defense-a-collaborative-approach-3a3104f5fe5c): *"The systematic application of a Deep understanding of adversary tradecraft and technology to prevent, detect and/or repond to cyber attacks"*
-<<<<<<< HEAD
 
-=======
-> 
->>>>>>> 1be040b91378aa099c6da426cb5c7eb7c5fc0808
 <img src="./assets/Picture4.png" width="30%">
 
 ### Puntos clave
