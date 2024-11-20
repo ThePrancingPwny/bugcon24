@@ -63,7 +63,11 @@ En escencia, un marco de trabajo **provee procesos repetibles y mejora la eficie
 
 > **CONCEPTO** 
 > [Threat Informed Defense](https://medium.com/mitre-engenuity/accelerating-threat-informed-defense-a-collaborative-approach-3a3104f5fe5c): *"The systematic application of a Deep understanding of adversary tradecraft and technology to prevent, detect and/or repond to cyber attacks"*
+<<<<<<< HEAD
 
+=======
+> 
+>>>>>>> 1be040b91378aa099c6da426cb5c7eb7c5fc0808
 <img src="./assets/Picture4.png" width="30%">
 
 ### Puntos clave
