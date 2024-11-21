@@ -427,11 +427,11 @@ Algunos problemas potenciales experimentados por el desarrollo de alertas incluy
 - La alerta no está validada para la durabilidad
 - La alerta no se revisa antes de su puesta en producción.
 
-La metodología de ingeniería de detección permite crear detecciones utilizando un proceso robusto y repetible. Estos pasos metódicos permiten obtener información que puede ser usada no solo en el desarrollo de detecciones sino también para documentar su alertamiento y respuesta. Tomando toda esta información generada en el desarrollo de una detección es posible trasladarla a nuestro ADS.
+La metodología de ingeniería de detección permite crear detecciones utilizando un proceso robusto y repetible. Estos pasos metódicos permiten obtener información que puede ser usada no solo en el desarrollo de detecciones sino también para documentar su alertamiento y respuesta. Tomando toda esta información generada en el desarrollo de una detección es posible trasladarla a un ADS.
 
 <img src="./assets/Picture39.png" width="70%">
 
-La metodologia de inegniera de detección y el proyecto ADS guardan una relación entre los pasos y secciones que conforman a ambos, por lo que es posible realizar un mapeo y ver visualmente como interactuan.
+La metodologia de ingenieria de detección y el proyecto ADS guardan una relación entre los pasos y secciones que conforman a ambos, por lo que es posible realizar un mapeo y ver visualmente como interactuan.
 
 <img src="./assets/Picture40.png" width="70%">
 
@@ -443,7 +443,7 @@ La metodologia de inegniera de detección y el proyecto ADS guardan una relació
 Dentro de la metodología de Threat Hunting e Ingeniería de Detección; es importante:
 
 - Conocer la importancia de contar con un entendimiento profundo del tradecraft empleado por los atacantes para detectar el uso de TTPs dentro del ambiente tecnológico que estemos defendiendo.
-- Lograr familiaridad con conceptos clave para operacionalizar inteligencia provista por el Mitre ATT&CK. Esto permite lograr un mayor entendimiento de como puede ser usada para madurar nuestras capacidades y estrategias de detección y respuesta. 
+- Lograr familiaridad con conceptos clave para operacionalizar inteligencia. Esto permite lograr un mayor entendimiento de como puede ser usada para madurar nuestras capacidades y estrategias de detección y respuesta. 
 
 - Ingeniería de Detección y Threat Hunting son dos disciplinas íntimamente relacionadas, conocer como influyen entre si nos ayuda a ser más efectivos en nuestros esfuerzos de identificación proactiva de amenazas. Threat Hunting e Ingeniería de Detección no se limitan al uso de herramientas, sino que emplean procesos iterativos, metódicos y analíticos.
 
