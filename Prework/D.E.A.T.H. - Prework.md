@@ -445,7 +445,8 @@ Dentro de la metodología de Threat Hunting e Ingeniería de Detección; es impo
 - Conocer la importancia de contar con un entendimiento profundo del tradecraft empleado por los atacantes para detectar el uso de TTPs dentro del ambiente tecnológico que estemos defendiendo.
 - Lograr familiaridad con conceptos clave para operacionalizar inteligencia provista por el Mitre ATT&CK. Esto permite lograr un mayor entendimiento de como puede ser usada para madurar nuestras capacidades y estrategias de detección y respuesta. 
 
-- Ingenieria de Detección y Threat Hunting son dos disciplinas intimamente relacionadas, conocer como influyen entre si nos ayuda a ser más efectivos en nuestros esfuerzos de identificación proactiva de amenazas. Threat Hunting e Ingenieria de Detección no se limitan al uso de herramientas, sino que emplean procesos iterativos, metódicos y analíticos.
+- Ingeniería de Detección y Threat Hunting son dos disciplinas íntimamente relacionadas, conocer como influyen entre si nos ayuda a ser más efectivos en nuestros esfuerzos de identificación proactiva de amenazas. Threat Hunting e Ingeniería de Detección no se limitan al uso de herramientas, sino que emplean procesos iterativos, metódicos y analíticos.
+
 - Mejorar el tradecraft del Blue Team permite cubrir esos “blind spots” que las amenazas buscan en las herramientas de detección.
 
 ## Extra mile
