@@ -21,6 +21,23 @@ The group’s methods are calculated and highly deceptive, using remote executio
 - T1071.001: Application Layer Protocol - Web Shell
 Annatar’s Shadow gains initial access through a web shell or the exploitation of vulnerabilities in public-facing applications. They often use phishing or credential stuffing to establish a foothold, with their actions hidden behind a layer of deception.
 
+### Execution:
+
+- T1035: Service Execution
+The group installs malicious services using the `sc` command, creating persistent mechanisms for executing malicious payloads across compromised systems. This ensures their control over the environment.
+
+- T1059.001: Command and Scripting Interpreter - PowerShell
+Annatar’s Shadow uses `PowerShell` to execute commands and scripts that escalate privileges, move laterally within the network, and interact with Windows Management Instrumentation (`WMI`) for remote management.
+
+
+
+
+
+
+### Impact (Ransomware):
+
+- T1486: Data Encrypted for Impact
+Once the attackers have gained sufficient control over the environment, they deploy their custom ransomware tool, `rb.exe`, which uses RSA asymmetric encryption to lock critical files across the network. The encrypted files are marked with a `.locked` extension, and a ransom note is left demanding payment in cryptocurrency for the decryption key. 
 
 ## Mitigation and Detection Recommendations:
 - Monitor for anomalous service creation and execution patterns, particularly with the `sc` command.
