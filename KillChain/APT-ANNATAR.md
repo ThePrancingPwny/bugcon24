@@ -30,9 +30,37 @@ The group installs malicious services using the `sc` command, creating persisten
 Annatar’s Shadow uses `PowerShell` to execute commands and scripts that escalate privileges, move laterally within the network, and interact with Windows Management Instrumentation (`WMI`) for remote management.
 
 
+### Privilege Escalation:
 
+- T1574.001: Hijack Execution Flow - DLL Injection
+Using `WMIC` and `PsExec`, the group hijacks system processes and runs malicious code with elevated privileges.
 
+- T1543.003: Create or Modify System Process - Windows Service
+The group uses the `sc` command to create or modify system processes, ensuring that malicious code is executed with elevated privileges at system startup.
 
+### Discovery:
+
+- T1087: Account Discovery
+Using `nslookup` and other reconnaissance tools, Annatar’s Shadow discovers active directories, user accounts, and system configurations. This gives them the knowledge necessary to identify valuable assets.
+
+- T1083: File and Directory Discovery
+Tools like `WMIC` and `PowerShell` are used to enumerate files and directories across the network. Sensitive files are targeted.
+
+### Credential Dumping:
+
+- T1003.001: OS Credential Dumping - LSASS Memory
+The group dumps credentials from compromised machines, gaining access to additional systems across the network.
+
+- T1075: Pass-the-Hash
+The group employs Pass-the-Hash attacks to move laterally through the network, evading detection as they silently escalate their access and control.
+
+### Lateral Movement:
+
+- T1021.002: Remote Services - SMB/NetSession
+Annatar’s Shadow uses `WinRM` and `PsExec` to move laterally, leveraging remote execution tools to deploy malicious code and maintain persistence across systems, spreading their influence.
+
+- T1076: Remote Desktop Protocol (RDP)
+`RDP` is used to further infiltrate the network. Annatar’s Shadow can access additional systems and maintain control.
 
 ### Impact (Ransomware):
 
